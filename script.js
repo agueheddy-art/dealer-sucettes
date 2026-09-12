@@ -1,4 +1,4 @@
-const whatsappNumber = "225158243324";
+const whatsappNumber = "2290158243324";
 const unitPrice = 100;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
