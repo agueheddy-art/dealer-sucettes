@@ -4,7 +4,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 document.addEventListener("DOMContentLoaded", () => {
 	const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .details-grid, .contact-content");
+	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .promo-bar, .details-grid, .catalog, .testimonials, .preview-grid");
 	const productStage = document.querySelector(".product-stage");
 	const quantityValue = document.querySelector("#quantity-value");
 	const totalValue = document.querySelector("#order-total");
@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
 			const action = button.dataset.quantityAction;
 			quantity = action === "increase" ? quantity + 1 : Math.max(1, quantity - 1);
 			updateOrderSummary();
+		});
+	});
+
+	document.querySelectorAll(".card-button").forEach((button) => {
+		button.addEventListener("click", () => {
+			const productName = button.dataset.product || "serviettes hygiéniques compressées";
+			const message = [
+				"Bonjour, je souhaite commander.",
+				`Produit : ${productName}.`,
+				"Merci !"
+			].join("\n");
+			window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
 		});
 	});
 
