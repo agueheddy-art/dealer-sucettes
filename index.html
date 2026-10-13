@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Serviettes hygiéniques compressées dans de jolis sachets de bonbon. Discrètes, pratiques et accessibles à 100 FCFA.">
+	<meta name="description" content="Serviettes hygiéniques compressées dans de jolis sachets de bonbon. Pratiques, faciles à emporter et accessibles à 300 FCFA.">
 	<title>Douceur Nomade | Serviettes hygiéniques compressées</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +18,15 @@
 					<span class="brand-mark">D</span>
 					<span>Douceur Nomade</span>
 				</a>
-				<nav class="nav-links" aria-label="Navigation principale">
+				<nav class="nav-links" id="main-navigation" aria-label="Navigation principale">
 					<a href="#details">Pourquoi nous</a>
-					<a href="#catalogue">Produits</a>
-					<a href="#avis">Avis</a>
+					<a href="#contact">Commander</a>
+					<a href="#conditions">Conditions</a>
 				</nav>
-				<a class="nav-link" href="#contact">Nous contacter &rarr;</a>
+				<button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-navigation">
+					<span></span><span></span><span></span>
+				</button>
+				<a class="nav-link" href="#contact">Commander &rarr;</a>
 			</div>
 		</header>
 
@@ -32,55 +35,24 @@
 				<div class="hero-text">
 					<p class="eyebrow">L'essentiel, autrement</p>
 					<h1>Le dealer de <em>sucettes hygiéniques.</em></h1>
-					<p class="hero-copy">Des serviettes hygiéniques compressées dans de jolis sachets de bonbon. Discrètes, pratiques, faciles à emporter et pensées pour les journées bien remplies.</p>
+					<p class="hero-copy">Des serviettes hygiéniques compressées dans de jolis sachets de bonbon. Pratiques, faciles à emporter et pensées pour les journées bien remplies.</p>
 					<div class="actions">
-						<a class="button button-primary" href="https://wa.me/2290158243324" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">
-							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.55 0 .23 5.31.23 11.85c0 2.09.55 4.13 1.59 5.92L.13 24l6.38-1.67a11.85 11.85 0 0 0 5.57 1.42h.01c6.53 0 11.85-5.31 11.85-11.85 0-3.17-1.23-6.14-3.44-8.4ZM12.09 21.7h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.81 9.81 0 0 1-1.5-5.19c0-5.4 4.39-9.79 9.8-9.79a9.73 9.73 0 0 1 6.93 2.87 9.76 9.76 0 0 1 2.86 6.94c0 5.44-4.39 9.83-9.8 9.83Zm5.38-7.36c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.65.15-.19.29-.75.95-.92 1.14-.17.2-.34.22-.63.07-.29-.15-1.2-.44-2.29-1.41-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.65-1.56-.89-2.14-.24-.56-.48-.49-.65-.5h-.55c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43s1.05 2.82 1.19 3.02c.15.2 2.06 3.15 4.99 4.42.7.3 1.24.48 1.66.61.7.22 1.34.19 1.84.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34Z"/></svg>
-							Commander sur WhatsApp
+						<a class="button button-primary" href="#contact" aria-label="Choisir la quantité à commander">
+							Choisir la quantité
 						</a>
 						<a class="button button-secondary" href="tel:+2290158243324">Appel direct</a>
 					</div>
-					<div class="hero-meta">
-						<div><strong>+1 000</strong><span>clients satisfaits</span></div>
-						<div><strong>4.9/5</strong><span>avis clients</span></div>
-						<div><strong>24h</strong><span>livraison rapide</span></div>
-					</div>
 				</div>
 
-				<div class="product-stage" aria-label="Trois sachets colorés de serviettes hygiéniques compressées">
-					<span class="sparkle sparkle-one">✦</span>
-					<span class="sparkle sparkle-two">✧</span>
-					<div class="sachet sachet-yellow">
-						<span class="tear-notch" aria-hidden="true"></span>
-						<span class="sachet-label">Douceur Nomade</span>
-						<span class="sachet-name">Soleil<br>tendre</span>
-						<span class="sachet-icon" aria-hidden="true"><span class="candy-shape"></span></span>
-						<span class="sachet-sticker">100 FCFA</span>
-						<span class="sachet-foot">serviette compressée</span>
-					</div>
-					<div class="sachet sachet-orange">
-						<span class="tear-notch" aria-hidden="true"></span>
-						<span class="sachet-label">Douceur Nomade</span>
-						<span class="sachet-name">Peau<br>de pêche</span>
-						<span class="sachet-icon" aria-hidden="true"><span class="candy-shape"></span></span>
-						<span class="sachet-sticker">100 FCFA</span>
-						<span class="sachet-foot">serviette compressée</span>
-					</div>
-					<div class="sachet sachet-turquoise">
-						<span class="tear-notch" aria-hidden="true"></span>
-						<span class="sachet-label">Douceur Nomade</span>
-						<span class="sachet-name">Brise<br>lagon</span>
-						<span class="sachet-icon" aria-hidden="true"><span class="candy-shape"></span></span>
-						<span class="sachet-sticker">100 FCFA</span>
-						<span class="sachet-foot">serviette compressée</span>
-					</div>
-					<div class="price-tag"><strong>100</strong><span>FCFA / sachet</span></div>
+				<div class="product-stage product-stage-with-photos">
+					<img class="product-photo" src="photo-sachets.jpg" alt="Trois serviettes hygiéniques compressées dans leurs sachets jaune, rouge et vert clair">
+					<div class="price-tag"><strong>300</strong><span>FCFA / sachet</span></div>
 				</div>
 			</section>
 
 			<section class="promo-bar">
 				<div class="container promo-grid">
-					<div><span class="promo-icon">✓</span><strong>Produit discret</strong></div>
+					<div><span class="promo-icon">✓</span><strong>Format pratique</strong></div>
 					<div><span class="promo-icon">✓</span><strong>Format nomade</strong></div>
 					<div><span class="promo-icon">✓</span><strong>Prix simple</strong></div>
 					<div><span class="promo-icon">✓</span><strong>Commande rapide</strong></div>
@@ -95,114 +67,24 @@
 						<p class="details-intro">Gardez-en une dans votre sac, votre poche ou votre tiroir. Elle est prête quand vous en avez besoin.</p>
 						<div class="benefits-list">
 							<div><span>01</span><p>Très compacte, idéale pour le quotidien et les déplacements.</p></div>
-							<div><span>02</span><p>Présentation douce et discrète pour un usage simple et rassurant.</p></div>
+							<div><span>02</span><p>Présentation douce et facile à garder dans un sac ou une pochette.</p></div>
 							<div><span>03</span><p>Un prix accessible pour rester sereine sans stress ni hésitation.</p></div>
 						</div>
 					</div>
 					<div class="features">
 						<article class="feature"><span class="feature-number">01 / NOMADE</span><h3>Emportez-la facilement</h3><p>Son format compact se glisse dans tous les petits espaces.</p></article>
-						<article class="feature"><span class="feature-number">02 / DISCRÈTE</span><h3>Un sachet tout en douceur</h3><p>Une présentation colorée et discrète, pensée pour vous.</p></article>
-						<article class="feature"><span class="feature-number">03 / ACCESSIBLE</span><h3>Seulement 100 FCFA</h3><p>L'essentiel à un prix simple, pour rester sereine chaque jour.</p></article>
-					</div>
-				</div>
-			</section>
-
-			<section class="catalog" id="catalogue">
-				<div class="container">
-					<div class="section-heading">
-						<div>
-							<p class="eyebrow eyebrow-dark">Nos best-sellers</p>
-							<h2>Une sélection pensée pour votre routine.</h2>
-						</div>
-						<a href="#contact" class="text-link">Voir plus</a>
-					</div>
-
-					<div class="product-grid">
-						<article class="product-card">
-							<div class="product-visual visual-yellow">
-								<span class="badge">Top vente</span>
-								<div class="mini-sachet">
-									<span class="mini-label">Douceur</span>
-									<span class="mini-name">Soleil</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<div class="product-meta"><span>100 FCFA</span><span>Produit discret</span></div>
-								<h3>Sachet Soleil tendre</h3>
-								<p>Pour les journées où le confort doit rester simple et discret.</p>
-								<button class="card-button" type="button" data-product="Sachet Soleil tendre">Commander</button>
-							</div>
-						</article>
-
-						<article class="product-card">
-							<div class="product-visual visual-orange">
-								<span class="badge">Nouveau</span>
-								<div class="mini-sachet">
-									<span class="mini-label">Douceur</span>
-									<span class="mini-name">Pêche</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<div class="product-meta"><span>100 FCFA</span><span>Format nomade</span></div>
-								<h3>Sachet Peau de pêche</h3>
-								<p>Un parfum douce, léger et facile à garder dans un sac.</p>
-								<button class="card-button" type="button" data-product="Sachet Peau de pêche">Commander</button>
-							</div>
-						</article>
-
-						<article class="product-card">
-							<div class="product-visual visual-turquoise">
-								<span class="badge">Favori</span>
-								<div class="mini-sachet">
-									<span class="mini-label">Douceur</span>
-									<span class="mini-name">Lagon</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<div class="product-meta"><span>100 FCFA</span><span>Très pratique</span></div>
-								<h3>Sachet Brise lagon</h3>
-								<p>Pour garder le confort à portée de main sans encombre.</p>
-								<button class="card-button" type="button" data-product="Sachet Brise lagon">Commander</button>
-							</div>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section class="testimonials" id="avis">
-				<div class="container">
-					<div class="section-heading center">
-						<div>
-							<p class="eyebrow eyebrow-dark">Ils nous font confiance</p>
-							<h2>Des avis qui parlent de la simplicité.</h2>
-						</div>
-					</div>
-					<div class="review-grid">
-						<article class="review-card">
-							<div class="stars">★★★★★</div>
-							<p>“Très pratique, bien emballé et surtout super discret. J’en garde toujours dans mon sac.”</p>
-							<strong>— Sarah</strong>
-						</article>
-						<article class="review-card highlight">
-							<div class="stars">★★★★★</div>
-							<p>“Le prix est juste, le format est parfait et le design est très sympa. Très bon achat.”</p>
-							<strong>— Awa</strong>
-						</article>
-						<article class="review-card">
-							<div class="stars">★★★★★</div>
-							<p>“Simple, discret et super utile. Je recommande sans hésiter pour le quotidien.”</p>
-							<strong>— Grace</strong>
-						</article>
+						<article class="feature"><span class="feature-number">02 / PRATIQUE</span><h3>Un sachet tout en douceur</h3><p>Une présentation colorée et facile à emporter, pensée pour votre quotidien.</p></article>
+						<article class="feature"><span class="feature-number">03 / ACCESSIBLE</span><h3>Seulement 300 FCFA</h3><p>L'essentiel à un prix simple, pour rester sereine chaque jour.</p></article>
 					</div>
 				</div>
 			</section>
 
 			<section class="preview-order" id="contact">
-				<div class="container preview-grid">
+				<div class="container">
 					<div class="order-card">
 						<div class="order-heading">
 							<div><span class="order-kicker">Votre commande</span><h3 id="order-title">Choisissez votre quantité</h3></div>
-							<span class="order-unit-price">100 FCFA / sachet</span>
+							<span class="order-unit-price">300 FCFA / sachet</span>
 						</div>
 						<div class="quantity-row">
 							<span class="quantity-label">Nombre de sachets</span>
@@ -212,28 +94,34 @@
 								<button class="quantity-button" type="button" data-quantity-action="increase" aria-label="Augmenter la quantité">+</button>
 							</div>
 						</div>
-						<div class="order-total"><span>Total</span><strong id="order-total">100 FCFA</strong></div>
+						<div class="order-total"><span>Total</span><strong id="order-total">300 FCFA</strong></div>
+						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
 						<button class="button button-primary order-button" id="order-button" type="button">Valider sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
 						<p class="order-note">WhatsApp s'ouvrira avec votre message déjà préparé.</p>
 					</div>
+				</div>
+			</section>
 
-					<div class="contact-panel">
-						<p class="eyebrow eyebrow-dark">Par ici</p>
-						<h2>Une commande, un appel, ou un petit message.</h2>
-						<p>Nous répondons rapidement pour vous aider à passer votre commande dans les meilleurs délais.</p>
-						<div class="contact-actions">
-							<a class="button button-primary" href="https://wa.me/2290158243324" target="_blank" rel="noopener">WhatsApp : 01 58 24 33 24</a>
-							<a class="button button-secondary" href="tel:+2290158243324">Appel direct</a>
-						</div>
-					</div>
+			<section class="terms" id="conditions">
+				<div class="container terms-content">
+					<p class="eyebrow eyebrow-dark">Avant de commander</p>
+					<h2>Règles et conditions d'utilisation</h2>
+					<ul>
+						<li>Les échanges entre la boutique et les clients se font avec respect, courtoisie et humilité.</li>
+						<li>Le site présente le produit et permet d'envoyer une demande de commande ; il ne confirme pas automatiquement une vente.</li>
+						<li>Le prix est de 300 FCFA par sachet. Le total affiché correspond aux produits commandés.</li>
+						<li>La commande est confirmée après échange avec nous sur WhatsApp.</li>
+						<li>La zone, les frais et le délai de livraison sont précisés sur WhatsApp avant confirmation.</li>
+						<li>Le paiement se fait à la livraison, en espèces ou par MoMo.</li>
+					</ul>
 				</div>
 			</section>
 		</main>
 
-		<footer><div class="container">Douceur Nomade &middot; L'essentiel, en toute simplicité.</div></footer>
+		<footer><div class="container">Douceur Nomade &middot; L'essentiel, en toute simplicité. <a href="#conditions">Conditions de commande</a></div></footer>
 	</div>
 
-	<a class="floating-whatsapp" href="https://wa.me/2290158243324" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">WhatsApp</a>
+	<a class="floating-whatsapp" href="#contact" aria-label="Choisir la quantité à commander">Commander</a>
 	<script src="script.js" defer></script>
 </body>
 </html>

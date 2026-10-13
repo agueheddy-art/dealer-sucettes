@@ -1,18 +1,30 @@
 const whatsappNumber = "2290158243324";
-const unitPrice = 100;
+const unitPrice = 300;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
-	const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .promo-bar, .details-grid, .catalog, .testimonials, .preview-grid");
+	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
 	const productStage = document.querySelector(".product-stage");
 	const quantityValue = document.querySelector("#quantity-value");
 	const totalValue = document.querySelector("#order-total");
 	const orderButton = document.querySelector("#order-button");
+	const menuToggle = document.querySelector(".menu-toggle");
+	const mainNavigation = document.querySelector("#main-navigation");
 	let quantity = 1;
 
-	whatsappLinks.forEach((link) => {
-		link.href = `https://wa.me/${whatsappNumber}`;
+	menuToggle.addEventListener("click", () => {
+		const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+		menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+		menuToggle.setAttribute("aria-label", isExpanded ? "Ouvrir le menu" : "Fermer le menu");
+		mainNavigation.classList.toggle("is-open", !isExpanded);
+	});
+
+	mainNavigation.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => {
+			menuToggle.setAttribute("aria-expanded", "false");
+			menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+			mainNavigation.classList.remove("is-open");
+		});
 	});
 
 	const updateOrderSummary = () => {
@@ -26,18 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			const action = button.dataset.quantityAction;
 			quantity = action === "increase" ? quantity + 1 : Math.max(1, quantity - 1);
 			updateOrderSummary();
-		});
-	});
-
-	document.querySelectorAll(".card-button").forEach((button) => {
-		button.addEventListener("click", () => {
-			const productName = button.dataset.product || "serviettes hygiéniques compressées";
-			const message = [
-				"Bonjour, je souhaite commander.",
-				`Produit : ${productName}.`,
-				"Merci !"
-			].join("\n");
-			window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
 		});
 	});
 
