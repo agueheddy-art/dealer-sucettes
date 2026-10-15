@@ -1,5 +1,5 @@
 const whatsappNumber = "2290158243324";
-const unitPrice = 300;
+const unitPrice = 200;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
