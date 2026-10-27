@@ -294,6 +294,15 @@ h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.03em; }
 	position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
 
+.reviews { padding: 0 0 70px; }
+.reviews-card {
+	display: flex; align-items: center; justify-content: space-between; gap: 28px;
+	padding: 30px; border: 1px solid #e9e3d7; border-radius: 20px; background: rgba(255,255,255,.72); box-shadow: 0 12px 28px rgba(51,72,64,.05);
+}
+.reviews-card h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+.reviews-card p:not(.eyebrow) { max-width: 650px; margin: 12px 0 0; color: var(--muted); }
+.reviews-card .eyebrow { margin-bottom: 12px; }
+
 .preview-order { padding: 10px 0 90px; }
 .preview-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: stretch; }
 .preview-order .order-card { max-width: 620px; margin: 0 auto; }
@@ -366,6 +375,7 @@ footer a { margin-left: 10px; color: var(--deep-teal); font-weight: 700; }
 	.review-grid { grid-template-columns: 1fr; }
 	.contact-content { align-items: flex-start; flex-direction: column; }
 	.contact-content .button { width: 100%; }
+	.reviews-card { align-items: stretch; flex-direction: column; padding: 24px; }
 	.menu-toggle {
 		display: grid; width: 44px; height: 44px; flex: 0 0 44px; place-content: center; gap: 5px;
 		border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.75); cursor: pointer;
