@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll("[data-order-card]").forEach((orderCard) => {
 		const unitPrice = Number(orderCard.dataset.unitPrice);
 		const orderItem = orderCard.dataset.orderItem;
+		const pluralOrderItem = orderCard.dataset.orderItemPlural || `${orderItem}s`;
 		const quantityValue = orderCard.querySelector("[data-quantity-value]");
 		const totalValue = orderCard.querySelector("[data-order-total]");
 		let quantity = 1;
@@ -47,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			const total = quantity * unitPrice;
 			const message = [
 				"Bonjour, je souhaite passer une commande.",
-				`Je voudrais ${quantity} ${orderItem}${quantity > 1 ? "s" : ""}.`,
+				`Je voudrais ${quantity} ${quantity > 1 ? pluralOrderItem : orderItem}.`,
 				`Total : ${total.toLocaleString("fr-FR")} FCFA.`,
 				"Merci !"
 			].join("\n");
-			window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+			window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`);
 		});
 	});
 
