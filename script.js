@@ -1,16 +1,11 @@
 const whatsappNumber = "2290158243324";
-const unitPrice = 200;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
-	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
+	const revealItems = document.querySelectorAll(".c12-featured, .hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
 	const productStage = document.querySelector(".product-stage");
-	const quantityValue = document.querySelector("#quantity-value");
-	const totalValue = document.querySelector("#order-total");
-	const orderButton = document.querySelector("#order-button");
 	const menuToggle = document.querySelector(".menu-toggle");
 	const mainNavigation = document.querySelector("#main-navigation");
-	let quantity = 1;
 
 	menuToggle.addEventListener("click", () => {
 		const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -27,29 +22,37 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	const updateOrderSummary = () => {
-		const total = quantity * unitPrice;
-		quantityValue.textContent = quantity;
-		totalValue.textContent = `${total.toLocaleString("fr-FR")} FCFA`;
-	};
+	document.querySelectorAll("[data-order-card]").forEach((orderCard) => {
+		const unitPrice = Number(orderCard.dataset.unitPrice);
+		const orderItem = orderCard.dataset.orderItem;
+		const quantityValue = orderCard.querySelector("[data-quantity-value]");
+		const totalValue = orderCard.querySelector("[data-order-total]");
+		let quantity = 1;
 
-	document.querySelectorAll("[data-quantity-action]").forEach((button) => {
-		button.addEventListener("click", () => {
-			const action = button.dataset.quantityAction;
-			quantity = action === "increase" ? quantity + 1 : Math.max(1, quantity - 1);
-			updateOrderSummary();
+		const updateOrderSummary = () => {
+			const total = quantity * unitPrice;
+			quantityValue.textContent = quantity;
+			totalValue.textContent = `${total.toLocaleString("fr-FR")} FCFA`;
+		};
+
+		orderCard.querySelectorAll("[data-quantity-action]").forEach((button) => {
+			button.addEventListener("click", () => {
+				const action = button.dataset.quantityAction;
+				quantity = action === "increase" ? quantity + 1 : Math.max(1, quantity - 1);
+				updateOrderSummary();
+			});
 		});
-	});
 
-	orderButton.addEventListener("click", () => {
-		const total = quantity * unitPrice;
-		const message = [
-			"Bonjour, je souhaite passer une commande.",
-			`Je voudrais ${quantity} sachet${quantity > 1 ? "s" : ""} de serviettes hygiéniques compressées.`,
-			`Total : ${total} FCFA.`,
-			"Merci !"
-		].join("\n");
-		window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+		orderCard.querySelector("[data-order-submit]").addEventListener("click", () => {
+			const total = quantity * unitPrice;
+			const message = [
+				"Bonjour, je souhaite passer une commande.",
+				`Je voudrais ${quantity} ${orderItem}${quantity > 1 ? "s" : ""}.`,
+				`Total : ${total.toLocaleString("fr-FR")} FCFA.`,
+				"Merci !"
+			].join("\n");
+			window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+		});
 	});
 
 	if (!prefersReducedMotion) {

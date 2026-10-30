@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Serviettes hygiéniques compressées dans de jolis sachets de bonbon. Pratiques, faciles à emporter et accessibles à 200 FCFA.">
-	<title>Douceur Nomade | Serviettes hygiéniques compressées</title>
+	<meta name="description" content="Découvrez le trépied C12 à 10 000 FCFA avec suivi de caméra, télécommande Bluetooth et grande stabilité, ainsi que nos serviettes hygiéniques compressées.">
+	<title>Douceur Nomade | Trépied C12 et serviettes hygiéniques</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
 					<span>Douceur Nomade</span>
 				</a>
 				<nav class="nav-links" id="main-navigation" aria-label="Navigation principale">
+					<a href="#trepied-c12">Trépied C12</a>
 					<a href="#details">Pourquoi nous</a>
 					<a href="#avis">Avis clients</a>
 					<a href="#contact">Commander</a>
@@ -27,11 +28,48 @@
 				<button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-navigation">
 					<span></span><span></span><span></span>
 				</button>
-				<a class="nav-link" href="#contact">Commander &rarr;</a>
+				<a class="nav-link" href="#c12-order">Commander &rarr;</a>
 			</div>
 		</header>
 
 		<main id="accueil">
+			<section class="container c12-featured" id="trepied-c12" aria-labelledby="c12-title">
+				<div class="c12-image-wrap">
+					<img src="c12-product.png" alt="Boîte du trépied C12 avec support de téléphone et stabilisateur selfie stick quadrupode">
+					<span class="c12-badge">Nouveauté</span>
+					<div class="c12-price"><strong>10 000</strong><span>FCFA</span></div>
+				</div>
+				<div class="c12-copy">
+					<p class="eyebrow">Nouveau chez Douceur Nomade</p>
+					<h2 id="c12-title">Le trépied C12, votre caméra vous suit.</h2>
+					<p class="c12-description">Filmez, prenez vos photos et profitez de vos appels vidéo avec un support pratique, stable et discret.</p>
+					<ul class="c12-features">
+						<li><span aria-hidden="true">✓</span><span><strong>Suivi de caméra</strong> pour rester dans le cadre pendant vos prises de vue.</span></li>
+						<li><span aria-hidden="true">✓</span><span><strong>Photo à distance</strong> grâce à la télécommande Bluetooth.</span></li>
+						<li><span aria-hidden="true">✓</span><span><strong>Stabilité</strong> avec sa conception trépied quadrupode.</span></li>
+						<li><span aria-hidden="true">✓</span><span><strong>Discrétion</strong> : un format pratique à emporter.</span></li>
+					</ul>
+					<div class="order-card c12-order-card" id="c12-order" data-order-card data-unit-price="10000" data-order-item="trépied C12">
+						<div class="order-heading">
+							<div><span class="order-kicker">Votre commande</span><h3>Choisissez votre quantité</h3></div>
+							<span class="order-unit-price">10 000 FCFA / trépied</span>
+						</div>
+						<div class="quantity-row">
+							<span class="quantity-label">Nombre de trépieds</span>
+							<div class="quantity-control" aria-label="Choisir le nombre de trépieds C12">
+								<button class="quantity-button" type="button" data-quantity-action="decrease" aria-label="Diminuer la quantité de trépieds">&minus;</button>
+								<span data-quantity-value aria-live="polite">1</span>
+								<button class="quantity-button" type="button" data-quantity-action="increase" aria-label="Augmenter la quantité de trépieds">+</button>
+							</div>
+						</div>
+						<div class="order-total"><span>Total</span><strong data-order-total>10 000 FCFA</strong></div>
+						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
+						<button class="button button-primary order-button" data-order-submit type="button">Commander le C12 sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
+						<p class="order-note">WhatsApp s'ouvrira avec votre message déjà préparé.</p>
+					</div>
+				</div>
+			</section>
+
 			<section class="container hero">
 				<div class="hero-text">
 					<p class="eyebrow">L'essentiel, autrement</p>
@@ -98,7 +136,7 @@
 
 			<section class="preview-order" id="contact">
 				<div class="container">
-					<div class="order-card">
+					<div class="order-card" data-order-card data-unit-price="200" data-order-item="sachet de serviettes hygiéniques compressées">
 						<div class="order-heading">
 							<div><span class="order-kicker">Votre commande</span><h3 id="order-title">Choisissez votre quantité</h3></div>
 							<span class="order-unit-price">200 FCFA / sachet</span>
@@ -107,13 +145,13 @@
 							<span class="quantity-label">Nombre de sachets</span>
 							<div class="quantity-control" aria-label="Choisir la quantité">
 								<button class="quantity-button" type="button" data-quantity-action="decrease" aria-label="Diminuer la quantité">&minus;</button>
-								<span id="quantity-value" aria-live="polite">1</span>
+								<span data-quantity-value aria-live="polite">1</span>
 								<button class="quantity-button" type="button" data-quantity-action="increase" aria-label="Augmenter la quantité">+</button>
 							</div>
 						</div>
-						<div class="order-total"><span>Total</span><strong id="order-total">200 FCFA</strong></div>
+						<div class="order-total"><span>Total</span><strong data-order-total>200 FCFA</strong></div>
 						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
-						<button class="button button-primary order-button" id="order-button" type="button">Valider sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
+						<button class="button button-primary order-button" data-order-submit type="button">Valider sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
 						<p class="order-note">WhatsApp s'ouvrira avec votre message déjà préparé.</p>
 					</div>
 				</div>
@@ -126,7 +164,7 @@
 					<ul>
 						<li>Les échanges entre la boutique et les clients se font avec respect, courtoisie et humilité.</li>
 						<li>Le site présente le produit et permet d'envoyer une demande de commande ; il ne confirme pas automatiquement une vente.</li>
-						<li>Le prix est de 200 FCFA par sachet. Le total affiché correspond aux produits commandés.</li>
+						<li>Le trépied C12 coûte 10 000 FCFA ; chaque sachet de serviettes hygiéniques compressées coûte 200 FCFA. Le total affiché correspond au produit sélectionné.</li>
 						<li>La commande est confirmée après échange avec nous sur WhatsApp.</li>
 						<li>La zone, les frais et le délai de livraison sont précisés sur WhatsApp avant confirmation.</li>
 						<li>Le paiement se fait à la livraison, en espèces ou par MoMo.</li>
@@ -151,7 +189,7 @@
 		<footer><div class="container">Douceur Nomade &middot; L'essentiel, en toute simplicité. <a href="#conditions">Conditions de commande</a></div></footer>
 	</div>
 
-	<a class="floating-whatsapp" href="#contact" aria-label="Choisir la quantité à commander">Commander</a>
+	<a class="floating-whatsapp" href="#c12-order" aria-label="Choisir la quantité du trépied C12 à commander">Commander le C12</a>
 	<script src="script.js" defer></script>
 </body>
 </html>
