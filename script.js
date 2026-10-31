@@ -5,6 +5,7 @@ const orderCounts = {
 	requests: 4,
 	confirmed: 2
 };
+const shopWhatsAppNumber = "2290158243324";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -72,6 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
 				return;
 			}
 			const total = quantity * unitPrice;
+			const whatsappMessage = [
+				"Bonjour Douceur Nomade,",
+				"Je souhaite passer une commande :",
+				`Produit : ${orderItem}`,
+				`Quantité : ${quantity}`,
+				`Total : ${total.toLocaleString("fr-FR")} FCFA`,
+				"Merci de me confirmer la disponibilité et les modalités de livraison."
+			].join("\n");
+			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 			submitButton.disabled = true;
 			status.textContent = "Envoi de votre demande…";
 
@@ -88,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 					createdAt: serverTimestamp()
 				});
 				customerForm.reset();
-				status.textContent = "Merci ! Votre demande a bien été transmise à la boutique.";
+				status.textContent = "Demande enregistrée. Ouverture de WhatsApp…";
+				window.location.assign(whatsappUrl);
 			} catch (error) {
 				console.error("Impossible d’enregistrer la demande de commande.", error);
 				status.textContent = "L’envoi a échoué. Vérifiez votre connexion ou contactez-nous par téléphone.";
