@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Espace commandes | Douceur Nomade</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="page-shell admin-page">
+		<header>
+			<div class="container nav">
+				<a class="brand" href="index.html">
+					<span class="brand-mark">D</span>
+					<span>Douceur Nomade</span>
+				</a>
+				<a class="nav-link" href="index.html">Retour à la boutique</a>
+			</div>
+		</header>
+
+		<main class="container admin-content">
+			<p class="eyebrow">Espace privé</p>
+			<h1>Vos commandes</h1>
+			<p class="admin-intro">Connectez-vous avec le compte administrateur Firebase pour consulter les demandes reçues.</p>
+
+			<form class="order-card admin-login" data-admin-login>
+				<h2>Connexion</h2>
+				<div class="customer-fields">
+					<div class="customer-field customer-field-wide">
+						<label for="admin-email">Adresse e-mail</label>
+						<input id="admin-email" name="email" type="email" autocomplete="username" required>
+					</div>
+					<div class="customer-field customer-field-wide">
+						<label for="admin-password">Mot de passe</label>
+						<input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+					</div>
+				</div>
+				<button class="button button-primary order-button" type="submit">Se connecter</button>
+				<p class="order-note" data-admin-auth-status role="status" aria-live="polite"></p>
+			</form>
+
+			<section class="admin-dashboard" data-admin-dashboard hidden aria-labelledby="admin-orders-title">
+				<div class="admin-dashboard-heading">
+					<h2 id="admin-orders-title">Demandes reçues</h2>
+					<button class="button button-secondary" type="button" data-admin-logout>Se déconnecter</button>
+				</div>
+				<p class="admin-status" data-admin-orders-status role="status" aria-live="polite"></p>
+				<div class="admin-orders" data-admin-orders></div>
+			</section>
+		</main>
+	</div>
+	<script type="module" src="admin.js"></script>
+</body>
+</html>

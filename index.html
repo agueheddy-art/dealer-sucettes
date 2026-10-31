@@ -19,6 +19,7 @@
 					<span>Douceur Nomade</span>
 				</a>
 				<nav class="nav-links" id="main-navigation" aria-label="Navigation principale">
+					<a href="#game-m15">Game M15</a>
 					<a href="#trepied-c12">Trépied C12</a>
 					<a href="#details">Pourquoi nous</a>
 					<a href="#avis">Avis clients</a>
@@ -32,7 +33,62 @@
 			</div>
 		</header>
 
+		<section class="order-count-bar" aria-label="Activité de la boutique">
+			<div class="container">
+				<p class="order-count-heading">La confiance grandit chez Douceur Nomade</p>
+				<p class="order-count" data-order-count aria-live="polite"></p>
+			</div>
+		</section>
+
 		<main id="accueil">
+			<section class="container m15-featured" id="game-m15" aria-labelledby="m15-title">
+				<div class="m15-poster">
+					<img src="m15-game-stick-poster.png" alt="Affiche Game Stick 4K avec deux manettes sans fil 2.4G et plus de 10 000 jeux rétro">
+				</div>
+				<div class="m15-copy">
+					<p class="eyebrow">Nouvelle arrivée</p>
+					<h1 id="m15-title">La game M15 est là.</h1>
+					<p class="m15-description">La Game Stick 4K avec deux manettes sans fil et plus de 10 000 jeux rétro, à découvrir chez Douceur Nomade.</p>
+					<p class="m15-copy-price"><strong>15 000 FCFA</strong><span>Console Game M15</span></p>
+					<div class="m15-highlight"><span aria-hidden="true">✦</span><span>La nouveauté gaming à découvrir dès maintenant</span></div>
+					<div class="order-card m15-order-card" id="m15-order" data-order-card data-unit-price="15000" data-order-item="console game M15" data-order-item-plural="consoles game M15">
+						<div class="order-heading">
+							<div><span class="order-kicker">Votre commande</span><h2>Choisissez votre quantité</h2></div>
+							<span class="order-unit-price">15 000 FCFA / M15</span>
+						</div>
+						<div class="quantity-row">
+							<span class="quantity-label">Nombre de M15</span>
+							<div class="quantity-control" aria-label="Choisir le nombre de consoles M15">
+								<button class="quantity-button" type="button" data-quantity-action="decrease" aria-label="Diminuer la quantité de M15">&minus;</button>
+								<span data-quantity-value aria-live="polite">1</span>
+								<button class="quantity-button" type="button" data-quantity-action="increase" aria-label="Augmenter la quantité de M15">+</button>
+							</div>
+						</div>
+						<div class="order-total"><span>Total</span><strong data-order-total>15 000 FCFA</strong></div>
+						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
+						<form class="order-customer-form" data-order-form>
+							<div class="customer-fields">
+								<div class="customer-field">
+									<label for="m15-first-name">Prénom</label>
+									<input id="m15-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="80" required>
+								</div>
+								<div class="customer-field">
+									<label for="m15-last-name">Nom</label>
+									<input id="m15-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="80" required>
+								</div>
+								<div class="customer-field customer-field-wide">
+									<label for="m15-phone">Numéro de téléphone</label>
+									<input id="m15-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required>
+								</div>
+							</div>
+							<label class="order-consent"><input name="consent" type="checkbox" required><span>J’accepte que mes coordonnées soient enregistrées pour traiter ma commande. Elles ne seront pas envoyées par WhatsApp.</span></label>
+							<button class="button button-primary order-button" data-order-submit type="submit">Commander la M15 <span aria-hidden="true">&rarr;</span></button>
+							<p class="order-note" data-order-status role="status" aria-live="polite">Vos coordonnées seront visibles par la boutique pour traiter votre demande.</p>
+						</form>
+					</div>
+				</div>
+			</section>
+
 			<section class="container c12-featured" id="trepied-c12" aria-labelledby="c12-title">
 				<div class="c12-image-wrap">
 					<img src="c12-product.png" alt="Boîte du trépied C12 avec support de téléphone et stabilisateur selfie stick quadrupode">
@@ -64,8 +120,25 @@
 						</div>
 						<div class="order-total"><span>Total</span><strong data-order-total>10 000 FCFA</strong></div>
 						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
-						<button class="button button-primary order-button" data-order-submit type="button">Commander le C12 sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
-						<p class="order-note">WhatsApp s'ouvrira avec votre message déjà préparé.</p>
+						<form class="order-customer-form" data-order-form>
+							<div class="customer-fields">
+								<div class="customer-field">
+									<label for="c12-first-name">Prénom</label>
+									<input id="c12-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="80" required>
+								</div>
+								<div class="customer-field">
+									<label for="c12-last-name">Nom</label>
+									<input id="c12-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="80" required>
+								</div>
+								<div class="customer-field customer-field-wide">
+									<label for="c12-phone">Numéro de téléphone</label>
+									<input id="c12-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required>
+								</div>
+							</div>
+							<label class="order-consent"><input name="consent" type="checkbox" required><span>J’accepte que mes coordonnées soient enregistrées pour traiter ma commande. Elles ne seront pas envoyées par WhatsApp.</span></label>
+							<button class="button button-primary order-button" data-order-submit type="submit">Envoyer ma demande de commande <span aria-hidden="true">&rarr;</span></button>
+							<p class="order-note" data-order-status role="status" aria-live="polite">Vos coordonnées seront visibles par la boutique pour traiter votre demande.</p>
+						</form>
 					</div>
 				</div>
 			</section>
@@ -151,8 +224,25 @@
 						</div>
 						<div class="order-total"><span>Total</span><strong data-order-total>200 FCFA</strong></div>
 						<p class="payment-note"><strong>Paiement à la livraison :</strong> en espèces ou par MoMo.</p>
-						<button class="button button-primary order-button" data-order-submit type="button">Valider sur WhatsApp <span aria-hidden="true">&rarr;</span></button>
-						<p class="order-note">WhatsApp s'ouvrira avec votre message déjà préparé.</p>
+						<form class="order-customer-form" data-order-form>
+							<div class="customer-fields">
+								<div class="customer-field">
+									<label for="sachets-first-name">Prénom</label>
+									<input id="sachets-first-name" name="firstName" type="text" autocomplete="given-name" maxlength="80" required>
+								</div>
+								<div class="customer-field">
+									<label for="sachets-last-name">Nom</label>
+									<input id="sachets-last-name" name="lastName" type="text" autocomplete="family-name" maxlength="80" required>
+								</div>
+								<div class="customer-field customer-field-wide">
+									<label for="sachets-phone">Numéro de téléphone</label>
+									<input id="sachets-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required>
+								</div>
+							</div>
+							<label class="order-consent"><input name="consent" type="checkbox" required><span>J’accepte que mes coordonnées soient enregistrées pour traiter ma commande. Elles ne seront pas envoyées par WhatsApp.</span></label>
+							<button class="button button-primary order-button" data-order-submit type="submit">Envoyer ma demande de commande <span aria-hidden="true">&rarr;</span></button>
+							<p class="order-note" data-order-status role="status" aria-live="polite">Vos coordonnées seront visibles par la boutique pour traiter votre demande.</p>
+						</form>
 					</div>
 				</div>
 			</section>
@@ -163,10 +253,10 @@
 					<h2>Règles et conditions d'utilisation</h2>
 					<ul>
 						<li>Les échanges entre la boutique et les clients se font avec respect, courtoisie et humilité.</li>
-						<li>Le site présente le produit et permet d'envoyer une demande de commande ; il ne confirme pas automatiquement une vente.</li>
-						<li>Le trépied C12 coûte 10 000 FCFA ; chaque sachet de serviettes hygiéniques compressées coûte 200 FCFA. Le total affiché correspond au produit sélectionné.</li>
-						<li>La commande est confirmée après échange avec nous sur WhatsApp.</li>
-						<li>La zone, les frais et le délai de livraison sont précisés sur WhatsApp avant confirmation.</li>
+						<li>Le site enregistre une demande de commande ; elle ne confirme pas automatiquement une vente.</li>
+						<li>La console game M15 coûte 15 000 FCFA, le trépied C12 coûte 10 000 FCFA et chaque sachet de serviettes hygiéniques compressées coûte 200 FCFA. Le total affiché correspond au produit sélectionné.</li>
+						<li>Votre nom, prénom et numéro sont enregistrés pour permettre à la boutique de traiter votre demande. Ils ne sont pas ajoutés à un message WhatsApp.</li>
+						<li>La commande est confirmée après échange avec nous ; la zone, les frais et le délai de livraison sont précisés avant confirmation.</li>
 						<li>Le paiement se fait à la livraison, en espèces ou par MoMo.</li>
 					</ul>
 				</div>
@@ -190,6 +280,6 @@
 	</div>
 
 	<a class="floating-whatsapp" href="#c12-order" aria-label="Choisir la quantité du trépied C12 à commander">Commander le C12</a>
-	<script src="script.js" defer></script>
+	<script type="module" src="script.js"></script>
 </body>
 </html>
