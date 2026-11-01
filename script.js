@@ -1,6 +1,3 @@
-import { db, firebaseConfigured } from "./firebase-config.js";
-import { addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
 const orderCounts = {
 	requests: 4,
 	confirmed: 2
@@ -55,57 +52,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 
-		orderCard.querySelector("[data-order-form]").addEventListener("submit", async (event) => {
+		orderCard.querySelector("[data-order-form]").addEventListener("submit", (event) => {
 			event.preventDefault();
-			const customerForm = event.currentTarget;
-			const submitButton = customerForm.querySelector("[data-order-submit]");
-			const status = customerForm.querySelector("[data-order-status]");
-			if (!firebaseConfigured) {
-				status.textContent = "La prise de commande n’est pas encore configurée. Veuillez nous contacter par téléphone.";
-				return;
-			}
-
-			const firstName = customerForm.querySelector('[name="firstName"]').value.trim();
-			const lastName = customerForm.querySelector('[name="lastName"]').value.trim();
-			const phone = customerForm.querySelector('[name="phone"]').value.trim();
-			if (!firstName || !lastName || firstName.length > 80 || lastName.length > 80 || phone.length < 6 || phone.length > 25) {
-				status.textContent = "Vérifiez votre prénom, votre nom et votre numéro de téléphone.";
-				return;
-			}
 			const total = quantity * unitPrice;
 			const whatsappMessage = [
-				"Bonjour Douceur Nomade,",
-				"Je souhaite passer une commande :",
-				`Produit : ${orderItem}`,
-				`Quantité : ${quantity}`,
-				`Total : ${total.toLocaleString("fr-FR")} FCFA`,
-				"Merci de me confirmer la disponibilité et les modalités de livraison."
+				"Bonjour, je commande :",
+				`${quantity} x ${orderItem}`,
+				`Total : ${total.toLocaleString("fr-FR")} FCFA`
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-			submitButton.disabled = true;
-			status.textContent = "Envoi de votre demande…";
-
-			try {
-				await addDoc(collection(db, "orders"), {
-					firstName,
-					lastName,
-					phone,
-					item: orderItem,
-					quantity,
-					unitPrice,
-					total,
-					consent: customerForm.querySelector('[name="consent"]').checked,
-					createdAt: serverTimestamp()
-				});
-				customerForm.reset();
-				status.textContent = "Demande enregistrée. Ouverture de WhatsApp…";
-				window.location.assign(whatsappUrl);
-			} catch (error) {
-				console.error("Impossible d’enregistrer la demande de commande.", error);
-				status.textContent = "L’envoi a échoué. Vérifiez votre connexion ou contactez-nous par téléphone.";
-			} finally {
-				submitButton.disabled = false;
-			}
+			window.location.assign(whatsappUrl);
 		});
 	});
 

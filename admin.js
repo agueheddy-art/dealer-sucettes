@@ -55,15 +55,13 @@ const renderOrders = (snapshot) => {
 		const heading = document.createElement("div");
 		heading.className = "admin-order-heading";
 		const customerName = document.createElement("h3");
-		customerName.textContent = `${order.firstName} ${order.lastName}`;
+		customerName.textContent = order.firstName || order.lastName
+			? `${order.firstName || ""} ${order.lastName || ""}`.trim()
+			: "Commande via le site";
 		const orderDate = document.createElement("time");
 		const date = order.createdAt?.toDate();
 		orderDate.textContent = date ? date.toLocaleString("fr-FR") : "Date indisponible";
 		heading.append(customerName, orderDate);
-
-		const phone = document.createElement("a");
-		phone.href = `tel:${encodeURIComponent(order.phone)}`;
-		phone.textContent = order.phone;
 
 		const item = document.createElement("p");
 		item.textContent = `${order.quantity} ${productName(order.item, order.quantity)}`;
@@ -88,7 +86,14 @@ const renderOrders = (snapshot) => {
 			}
 		});
 
-		card.append(heading, phone, item, total, deleteButton);
+		card.append(heading);
+		if (order.phone) {
+			const phone = document.createElement("a");
+			phone.href = `tel:${encodeURIComponent(order.phone)}`;
+			phone.textContent = order.phone;
+			card.append(phone);
+		}
+		card.append(item, total, deleteButton);
 		ordersContainer.append(card);
 	});
 };
