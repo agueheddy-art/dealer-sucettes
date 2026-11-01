@@ -54,11 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 			const form = event.currentTarget;
-			const submitButton = form.querySelector('button[type="submit"]');
 			const orderNote = form.querySelector(".order-note");
 			window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-			submitButton.disabled = true;
-			orderNote.textContent = "WhatsApp est ouvert. Enregistrement de votre demande…";
+			orderNote.textContent = "WhatsApp est ouvert. Enregistrement de la demande en arrière-plan…";
 
 			try {
 				const [{ db, firebaseConfigured }, { addDoc, collection, serverTimestamp }] = await Promise.all([
@@ -81,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			} catch (error) {
 				console.error("Impossible d’enregistrer la demande de commande.", error);
 				orderNote.textContent = "WhatsApp est ouvert, mais la demande n’a pas pu être enregistrée. Vérifiez le message puis appuyez sur Envoyer.";
-				submitButton.disabled = false;
 			}
 		});
 	});
