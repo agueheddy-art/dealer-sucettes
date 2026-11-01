@@ -378,11 +378,6 @@ h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.03em; }
 .payment-note { margin: 16px 0 0; padding: 11px 13px; border-radius: 8px; background: #ecf8f5; color: var(--deep-teal); font-size: .84rem; }
 .order-button { width: 100%; margin-top: 18px; border: 0; cursor: pointer; }
 .order-note { margin: 10px 0 0; color: var(--muted); font-size: .7rem; text-align: center; }
-.order-count-bar { padding: 18px 0; background: var(--deep-teal); color: white; text-align: center; }
-.order-count-bar .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 20px; }
-.order-count-heading { margin: 0; color: #ccebe5; font-family: "Playfair Display", serif; font-size: 1.05rem; }
-.order-count { margin: 0; font-size: .92rem; font-weight: 700; }
-
 .contact-bar { padding: 28px 0; background: var(--deep-teal); color: white; }
 .contact-content { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 .contact-content p { margin: 0; color: #ccebe5; font-size: .9rem; }
@@ -503,7 +498,6 @@ footer a { margin-left: 10px; color: var(--deep-teal); font-weight: 700; }
 	.contact-content { align-items: flex-start; flex-direction: column; }
 	.contact-content .button { width: 100%; }
 	.reviews-card { align-items: stretch; flex-direction: column; padding: 24px; }
-	.order-count-bar .container { flex-direction: column; gap: 3px; }
 	.menu-toggle {
 		display: grid; width: 44px; height: 44px; flex: 0 0 44px; place-content: center; gap: 5px;
 		border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.75); cursor: pointer;

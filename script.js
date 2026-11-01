@@ -1,15 +1,14 @@
-const orderCounts = {
-	requests: 4,
-	confirmed: 2
-};
+import { db, firebaseConfigured } from "./firebase-config.js";
+import {
+	addDoc,
+	collection,
+	serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
 const shopWhatsAppNumber = "2290158243324";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.querySelectorAll("[data-order-count]").forEach((counter) => {
-		counter.textContent = `Demandes reçues : ${orderCounts.requests} · Commandes confirmées : ${orderCounts.confirmed}`;
-	});
-
 	const revealItems = document.querySelectorAll(".m15-featured, .c12-featured, .hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
 	const productStage = document.querySelector(".product-stage");
 	const menuToggle = document.querySelector(".menu-toggle");
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 
-		orderCard.querySelector("[data-order-form]").addEventListener("submit", (event) => {
+		orderCard.querySelector("[data-order-form]").addEventListener("submit", async (event) => {
 			event.preventDefault();
 			const total = quantity * unitPrice;
 			const whatsappMessage = [
@@ -61,7 +60,30 @@ document.addEventListener("DOMContentLoaded", () => {
 				`Total : ${total.toLocaleString("fr-FR")} FCFA`
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-			window.location.assign(whatsappUrl);
+			const form = event.currentTarget;
+			const submitButton = form.querySelector('button[type="submit"]');
+			const orderNote = form.querySelector(".order-note");
+			submitButton.disabled = true;
+			orderNote.textContent = "Enregistrement de votre demande…";
+
+			try {
+				if (!firebaseConfigured || !db) {
+					throw new Error("Firebase n’est pas configuré.");
+				}
+
+				await addDoc(collection(db, "orders"), {
+					item: orderItem,
+					quantity,
+					unitPrice,
+					total,
+					createdAt: serverTimestamp()
+				});
+				window.location.assign(whatsappUrl);
+			} catch (error) {
+				console.error("Impossible d’enregistrer la demande de commande.", error);
+				orderNote.textContent = "Impossible d’enregistrer votre demande. Vérifiez la connexion puis réessayez.";
+				submitButton.disabled = false;
+			}
 		});
 	});
 

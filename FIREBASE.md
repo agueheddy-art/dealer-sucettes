@@ -1,6 +1,6 @@
 # Configurer Firebase
 
-Le site est hébergé en fichiers statiques. Les commandes se font directement dans WhatsApp et ne sont pas enregistrées sur le site. Firebase sert uniquement à consulter les anciennes demandes déjà enregistrées dans l'espace administrateur.
+Le site est hébergé en fichiers statiques. Quand un client clique sur « Commander sur WhatsApp », le site enregistre le produit, la quantité, le total et la date dans Firebase, puis ouvre WhatsApp. Aucune coordonnée personnelle n'est enregistrée. Cette demande indique un clic sur le bouton ; le site ne peut pas savoir si le client a ensuite envoyé le message dans WhatsApp.
 
 ## 1. Créer le projet Firebase
 
@@ -28,7 +28,7 @@ La configuration Web Firebase n'est pas un mot de passe. Ne mettez jamais de mot
 4. Dans ces règles, remplacez `REMPLACER_PAR_UID_ADMIN` par le même UID administrateur.
 5. Publiez les règles.
 
-Ces règles réservent la lecture et la suppression des anciennes demandes à l'UID administrateur. Le site n'enregistre plus de nouvelles commandes dans Firestore. Ne remplacez pas ces règles par une autorisation générale telle que `allow read, write: if true`.
+Ces règles autorisent l'enregistrement de demandes limitées aux produits et prix définis, et réservent leur lecture et leur suppression à l'UID administrateur. Ne remplacez pas ces règles par une autorisation générale telle que `allow read, write: if true`.
 
 Si vous ajoutez le produit M15, republiez aussi la version actuelle de `firestore.rules` afin que Firestore accepte les commandes de ce produit.
 
@@ -37,12 +37,8 @@ Si vous ajoutez le produit M15, republiez aussi la version actuelle de `firestor
 1. Publiez les fichiers du site sur GitHub Pages.
 2. Dans Firebase Console, ouvrez **Authentication > Settings > Authorized domains** et ajoutez le domaine de votre site GitHub Pages (par exemple `votre-compte.github.io`) pour permettre la connexion administrateur.
 3. Sur le site publié, choisissez un produit et une quantité, puis vérifiez que le bouton ouvre WhatsApp avec un message court contenant le produit, la quantité et le total.
-4. Ouvrez `https://votre-compte.github.io/votre-depot/admin.html` pour consulter les anciennes demandes enregistrées.
+4. Ouvrez `https://votre-compte.github.io/votre-depot/admin.html` pour consulter les demandes enregistrées et leur nombre.
 
-Le bouton de commande ouvre directement WhatsApp avec un message prérempli adressé au numéro de contact de la boutique. Le client vérifie le produit, la quantité et le total, puis appuie sur **Envoyer**. Aucune coordonnée personnelle n'est demandée et aucune commande n'est enregistrée par le site. La demande n'est transmise à la boutique qu'après son envoi dans WhatsApp.
+Le clic sur le bouton enregistre une demande dans Firestore avant d'ouvrir WhatsApp avec un message prérempli adressé au numéro de contact de la boutique. Le client vérifie le produit, la quantité et le total, puis appuie sur **Envoyer**. Le compteur de l'espace administrateur correspond aux demandes enregistrées (clics), pas nécessairement aux messages effectivement envoyés. Aucune coordonnée personnelle n'est demandée ni enregistrée.
 
-L'écran administrateur permet de consulter et supprimer les anciennes demandes. Une connexion Internet est requise pour WhatsApp et pour consulter ces demandes. En cas de problème de connexion administrateur, vérifiez la configuration Firebase, les règles Firestore et le domaine autorisé.
-
-## Mettre à jour les compteurs manuels
-
-Les compteurs affichés sous les formulaires ne sont pas calculés automatiquement. Dans `script.js`, modifiez les valeurs `requests` (demandes reçues) et `confirmed` (commandes confirmées), puis republiez le site.
+L'écran administrateur permet de consulter le nombre de demandes enregistrées et de les supprimer. Une connexion Internet est requise pour enregistrer une demande, ouvrir WhatsApp et consulter ces demandes. Si l'enregistrement échoue, un message s'affiche et WhatsApp ne s'ouvre pas : vérifiez la configuration Firebase, les règles Firestore et la connexion.
