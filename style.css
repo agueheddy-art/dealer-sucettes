@@ -52,7 +52,7 @@ header { position: relative; z-index: 10; padding: 24px 0; }
 	position: relative; min-height: 570px; overflow: hidden; border: 1px solid rgba(255,255,255,.75); border-radius: 30px;
 	background: #eef1f7; box-shadow: 0 30px 70px rgba(27,30,51,.24);
 }
-.m15-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.m15-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; animation: m15-showcase 8s ease-in-out infinite; }
 .m15-copy > .eyebrow { margin-bottom: 14px; }
 .m15-copy > h1 { max-width: 600px; color: #191d2b; }
 .m15-copy > h1 em { color: #c4573f; }
@@ -61,7 +61,7 @@ header { position: relative; z-index: 10; padding: 24px 0; }
 .m15-copy-price strong { color: #171b28; font-family: "Playfair Display", serif; font-size: 1.8rem; }
 .m15-copy-price span { color: var(--muted); font-size: .84rem; font-weight: 600; }
 .m15-highlight { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; color: #8d5c09; font-size: .88rem; font-weight: 700; }
-.m15-highlight > span:first-child { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #fff0c1; }
+.m15-highlight > span:first-child { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #fff0c1; animation: highlight-sparkle 3s ease-in-out infinite; }
 .m15-order-card { padding: 22px; }
 .m15-order-card .order-heading h2 { margin: 4px 0 0; font-size: 1.02rem; letter-spacing: 0; }
 .m15-order-card .order-unit-price { white-space: nowrap; }
@@ -74,13 +74,13 @@ header { position: relative; z-index: 10; padding: 24px 0; }
 	position: relative; min-height: 520px; overflow: hidden; border: 1px solid rgba(255,255,255,.82); border-radius: 30px;
 	background: linear-gradient(145deg, #d9e8e4, #f8e6bd 58%, #e8c1a8); box-shadow: var(--shadow);
 }
-.c12-image-wrap img { width: 100%; height: 520px; object-fit: contain; }
+.c12-image-wrap img { width: 100%; height: 520px; object-fit: contain; animation: c12-showcase 5s ease-in-out infinite; }
 .c12-badge {
 	position: absolute; top: 18px; left: 18px; padding: 7px 13px; border-radius: 99px; background: var(--deep-teal); color: white; font-size: .75rem; font-weight: 700;
 }
 .c12-price {
 	position: absolute; right: 18px; bottom: 18px; display: grid; min-width: 118px; min-height: 74px; place-content: center; padding: 10px 14px;
-	border: 1px solid rgba(255,255,255,.8); border-radius: 18px; background: rgba(255,253,248,.94); box-shadow: 0 10px 26px rgba(35,52,58,.12); text-align: center;
+	border: 1px solid rgba(255,255,255,.8); border-radius: 18px; background: rgba(255,253,248,.94); box-shadow: 0 10px 26px rgba(35,52,58,.12); text-align: center; animation: price-float 4s ease-in-out infinite;
 }
 .c12-price strong { font-family: "Playfair Display", serif; font-size: 1.45rem; line-height: 1.1; }
 .c12-price span { color: var(--muted); font-size: .72rem; font-weight: 700; }
@@ -112,6 +112,7 @@ h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.03em; }
 }
 .button:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(40,123,120,.15); }
 .button-primary { color: white; background: var(--deep-teal); }
+.order-button { animation: order-glow 2.4s ease-in-out infinite; }
 .button-secondary { color: var(--deep-teal); border-color: #b7d9d3; background: rgba(255,255,255,.46); }
 .button-secondary:hover { background: white; }
 .button svg { width: 18px; height: 18px; fill: currentColor; }
@@ -397,7 +398,51 @@ footer a { margin-left: 10px; color: var(--deep-teal); font-weight: 700; }
 
 .floating-whatsapp {
 	position: fixed; right: 18px; bottom: 20px; z-index: 20; display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
-	padding: 0 18px; border-radius: 999px; background: #25d366; color: white; box-shadow: 0 12px 25px rgba(52,165,89,.35); font-weight: 700;
+	padding: 0 18px; border-radius: 999px; background: #25d366; color: white; box-shadow: 0 12px 25px rgba(52,165,89,.35); font-weight: 700; animation: whatsapp-attention 3.6s ease-in-out infinite;
+}
+
+@keyframes m15-showcase {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.035); }
+}
+
+@keyframes c12-showcase {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-8px); }
+}
+
+@keyframes price-float {
+	0%, 100% { transform: translateY(0) rotate(0); }
+	50% { transform: translateY(-5px) rotate(2deg); }
+}
+
+@keyframes highlight-sparkle {
+	0%, 100% { transform: scale(1) rotate(0); }
+	50% { transform: scale(1.12) rotate(12deg); }
+}
+
+@keyframes order-glow {
+	0%, 68%, 100% { transform: translateX(0); box-shadow: 0 0 0 0 rgba(40,123,120,0); }
+	72% { transform: translateX(-5px); }
+	76% { transform: translateX(5px); box-shadow: 0 8px 22px rgba(40,123,120,.24); }
+	80% { transform: translateX(-4px); }
+	84% { transform: translateX(4px); }
+	88% { transform: translateX(0); }
+}
+
+@keyframes whatsapp-attention {
+	0%, 82%, 100% { transform: translateY(0); }
+	88% { transform: translateY(-4px); }
+	94% { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		scroll-behavior: auto !important;
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .01ms !important;
+	}
 }
 
 .admin-content { max-width: 760px; padding-top: 40px; padding-bottom: 90px; }
