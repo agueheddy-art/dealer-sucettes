@@ -1,10 +1,3 @@
-import { db, firebaseConfigured } from "./firebase-config.js";
-import {
-	addDoc,
-	collection,
-	serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
 const shopWhatsAppNumber = "2290158243324";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -63,10 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			const form = event.currentTarget;
 			const submitButton = form.querySelector('button[type="submit"]');
 			const orderNote = form.querySelector(".order-note");
+			window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 			submitButton.disabled = true;
-			orderNote.textContent = "Enregistrement de votre demande…";
+			orderNote.textContent = "WhatsApp est ouvert. Enregistrement de votre demande…";
 
 			try {
+				const [{ db, firebaseConfigured }, { addDoc, collection, serverTimestamp }] = await Promise.all([
+					import("./firebase-config.js"),
+					import("https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js")
+				]);
+
 				if (!firebaseConfigured || !db) {
 					throw new Error("Firebase n’est pas configuré.");
 				}
@@ -78,10 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
 					total,
 					createdAt: serverTimestamp()
 				});
-				window.location.assign(whatsappUrl);
+				orderNote.textContent = "Demande enregistrée. Vérifiez le message WhatsApp puis appuyez sur Envoyer.";
 			} catch (error) {
 				console.error("Impossible d’enregistrer la demande de commande.", error);
-				orderNote.textContent = "Impossible d’enregistrer votre demande. Vérifiez la connexion puis réessayez.";
+				orderNote.textContent = "WhatsApp est ouvert, mais la demande n’a pas pu être enregistrée. Vérifiez le message puis appuyez sur Envoyer.";
 				submitButton.disabled = false;
 			}
 		});

@@ -1,6 +1,6 @@
 # Configurer Firebase
 
-Le site est hébergé en fichiers statiques. Quand un client clique sur « Commander sur WhatsApp », le site enregistre le produit, la quantité, le total et la date dans Firebase, puis ouvre WhatsApp. Aucune coordonnée personnelle n'est enregistrée. Cette demande indique un clic sur le bouton ; le site ne peut pas savoir si le client a ensuite envoyé le message dans WhatsApp.
+Le site est hébergé en fichiers statiques. Quand un client clique sur « Commander sur WhatsApp », WhatsApp s'ouvre immédiatement avec le produit, la quantité et le total ; le site essaie ensuite d'enregistrer la demande dans Firebase. Une erreur Firebase n'empêche donc pas le client d'envoyer sa commande. Aucune coordonnée personnelle n'est enregistrée. Cette demande indique un clic sur le bouton ; le site ne peut pas savoir si le client a ensuite envoyé le message dans WhatsApp.
 
 ## 1. Créer le projet Firebase
 
@@ -39,6 +39,6 @@ Si vous ajoutez le produit M15, republiez aussi la version actuelle de `firestor
 3. Sur le site publié, choisissez un produit et une quantité, puis vérifiez que le bouton ouvre WhatsApp avec un message court contenant le produit, la quantité et le total.
 4. Ouvrez `https://votre-compte.github.io/votre-depot/admin.html` pour consulter les demandes enregistrées et leur nombre.
 
-Le clic sur le bouton enregistre une demande dans Firestore avant d'ouvrir WhatsApp avec un message prérempli adressé au numéro de contact de la boutique. Le client vérifie le produit, la quantité et le total, puis appuie sur **Envoyer**. Le compteur de l'espace administrateur correspond aux demandes enregistrées (clics), pas nécessairement aux messages effectivement envoyés. Aucune coordonnée personnelle n'est demandée ni enregistrée.
+Le clic sur le bouton ouvre immédiatement WhatsApp dans un nouvel onglet avec un message prérempli adressé au numéro de contact de la boutique, puis le site essaie d'enregistrer la demande dans Firestore. Le client vérifie le produit, la quantité et le total, puis appuie sur **Envoyer**. Le compteur de l'espace administrateur correspond aux demandes enregistrées (clics), pas nécessairement aux messages effectivement envoyés. Aucune coordonnée personnelle n'est demandée ni enregistrée.
 
-L'écran administrateur permet de consulter le nombre de demandes enregistrées et de les supprimer. Une connexion Internet est requise pour enregistrer une demande, ouvrir WhatsApp et consulter ces demandes. Si l'enregistrement échoue, un message s'affiche et WhatsApp ne s'ouvre pas : vérifiez la configuration Firebase, les règles Firestore et la connexion.
+L'écran administrateur permet de consulter le nombre de demandes enregistrées et de les supprimer. Une connexion Internet est requise pour enregistrer une demande, ouvrir WhatsApp et consulter ces demandes. Si l'enregistrement échoue, WhatsApp reste ouvert et un message indique que la demande n'a pas été enregistrée ; vérifiez la configuration Firebase, les règles Firestore et la connexion.
