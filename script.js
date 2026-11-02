@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll("[data-order-card]").forEach((orderCard) => {
 		const unitPrice = Number(orderCard.dataset.unitPrice);
 		const orderItem = orderCard.dataset.orderItem;
+		const orderItemPlural = orderCard.dataset.orderItemPlural || orderItem;
 		const quantityValue = orderCard.querySelector("[data-quantity-value]");
 		const totalValue = orderCard.querySelector("[data-order-total]");
 		let quantity = 1;
@@ -44,42 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 
-		orderCard.querySelector("[data-order-form]").addEventListener("submit", async (event) => {
+		orderCard.querySelector("[data-order-form]").addEventListener("submit", (event) => {
 			event.preventDefault();
 			const total = quantity * unitPrice;
 			const whatsappMessage = [
-				"Bonjour, je commande :",
-				`${quantity} x ${orderItem}`,
-				`Total : ${total.toLocaleString("fr-FR")} FCFA`
+				"Bonjour, je souhaite commander :",
+				`${quantity} x ${quantity === 1 ? orderItem : orderItemPlural}`,
+				`Total : ${total.toLocaleString("fr-FR")} FCFA`,
+				"Merci de confirmer la disponibilité ainsi que les frais et délais de livraison."
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-			const form = event.currentTarget;
-			const orderNote = form.querySelector(".order-note");
 			window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-			orderNote.textContent = "WhatsApp est ouvert. Enregistrement de la demande en arrière-plan…";
-
-			try {
-				const [{ db, firebaseConfigured }, { addDoc, collection, serverTimestamp }] = await Promise.all([
-					import("./firebase-config.js"),
-					import("https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js")
-				]);
-
-				if (!firebaseConfigured || !db) {
-					throw new Error("Firebase n’est pas configuré.");
-				}
-
-				await addDoc(collection(db, "orders"), {
-					item: orderItem,
-					quantity,
-					unitPrice,
-					total,
-					createdAt: serverTimestamp()
-				});
-				orderNote.textContent = "Demande enregistrée. Vérifiez le message WhatsApp puis appuyez sur Envoyer.";
-			} catch (error) {
-				console.error("Impossible d’enregistrer la demande de commande.", error);
-				orderNote.textContent = "WhatsApp est ouvert, mais la demande n’a pas pu être enregistrée. Vérifiez le message puis appuyez sur Envoyer.";
-			}
 		});
 	});
 
