@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Bonjour, je souhaite commander :",
 				`${quantity} x ${quantity === 1 ? orderItem : orderItemPlural}`,
 				`Total : ${total.toLocaleString("fr-FR")} FCFA`,
-				"Merci de confirmer la disponibilité ainsi que les frais et délais de livraison."
+				"Livraison gratuite.",
+				"Merci de confirmer la disponibilité et le délai de livraison."
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 			window.open(whatsappUrl, "_blank", "noopener,noreferrer");
