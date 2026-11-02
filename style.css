@@ -367,6 +367,13 @@ h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.03em; }
 .order-total { padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
 .order-total strong { color: var(--ink); font-family: "Playfair Display", serif; font-size: 1.4rem; }
 .payment-note { margin: 16px 0 0; padding: 11px 13px; border-radius: 8px; background: #ecf8f5; color: var(--deep-teal); font-size: .84rem; }
+.product-phone {
+	display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 11px 13px;
+	border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.72); font-size: .78rem;
+}
+.product-phone span { color: var(--muted); }
+.product-phone strong { color: var(--deep-teal); white-space: nowrap; }
+.product-phone:hover strong { text-decoration: underline; }
 .order-button { width: 100%; margin-top: 18px; border: 0; cursor: pointer; }
 .order-note { margin: 10px 0 0; color: var(--muted); font-size: .7rem; text-align: center; }
 .contact-bar { padding: 28px 0; background: var(--deep-teal); color: white; }
