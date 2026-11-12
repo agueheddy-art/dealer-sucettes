@@ -2,10 +2,17 @@ const shopWhatsAppNumber = "2290158243324";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
-	const revealItems = document.querySelectorAll(".m15-featured, .c12-featured, .hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
+	const revealItems = document.querySelectorAll(".accessory-option, .hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
 	const productStage = document.querySelector(".product-stage");
 	const menuToggle = document.querySelector(".menu-toggle");
 	const mainNavigation = document.querySelector("#main-navigation");
+
+	document.querySelectorAll('a[href^="#"]').forEach((link) => {
+		link.addEventListener("click", () => {
+			const target = document.getElementById(link.hash.slice(1));
+			target?.closest("details")?.setAttribute("open", "");
+		});
+	});
 
 	menuToggle.addEventListener("click", () => {
 		const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
