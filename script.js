@@ -2,8 +2,7 @@ const shopWhatsAppNumber = "2290158243324";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
-	const revealItems = document.querySelectorAll(".accessory-option, .hero-text, .product-stage, .promo-bar, .details-grid, .preview-order .order-card");
-	const productStage = document.querySelector(".product-stage");
+	const revealItems = document.querySelectorAll(".hero-text, .product-stage, .promo-bar, .details-grid, .order-steps-heading, .order-steps .feature, .preview-order .order-card");
 	const menuToggle = document.querySelector(".menu-toggle");
 	const mainNavigation = document.querySelector("#main-navigation");
 
@@ -35,31 +34,51 @@ document.addEventListener("DOMContentLoaded", () => {
 		const orderItemPlural = orderCard.dataset.orderItemPlural || orderItem;
 		const quantityValue = orderCard.querySelector("[data-quantity-value]");
 		const totalValue = orderCard.querySelector("[data-order-total]");
+		const maxQuantity = Math.floor(Number.MAX_SAFE_INTEGER / unitPrice);
 		let quantity = 1;
 
-		const updateOrderSummary = () => {
+		const updateOrderSummary = (syncInput = true) => {
 			const total = quantity * unitPrice;
-			quantityValue.textContent = quantity;
+			if (syncInput) quantityValue.value = quantity;
 			totalValue.textContent = `${total.toLocaleString("fr-FR")} FCFA`;
-			orderCard.querySelector('[data-quantity-action="increase"]').disabled = quantity >= 100;
+			orderCard.querySelector('[data-quantity-action="increase"]').disabled = quantity >= maxQuantity;
+			orderCard.querySelector('[data-quantity-action="decrease"]').disabled = quantity <= 1;
 		};
 
 		orderCard.querySelectorAll("[data-quantity-action]").forEach((button) => {
 			button.addEventListener("click", () => {
 				const action = button.dataset.quantityAction;
-				quantity = action === "increase" ? Math.min(100, quantity + 1) : Math.max(1, quantity - 1);
+				quantity = action === "increase" ? Math.min(maxQuantity, quantity + 1) : Math.max(1, quantity - 1);
 				updateOrderSummary();
 			});
 		});
 
+		quantityValue.max = String(maxQuantity);
+		quantityValue.addEventListener("input", () => {
+			const enteredQuantity = Number(quantityValue.value);
+			if (!quantityValue.value || !Number.isSafeInteger(enteredQuantity) || enteredQuantity < 1 || enteredQuantity > maxQuantity) return;
+			quantity = enteredQuantity;
+			updateOrderSummary(false);
+		});
+		quantityValue.addEventListener("change", () => {
+			if (!quantityValue.validity.valid || !Number.isSafeInteger(Number(quantityValue.value))) {
+				updateOrderSummary();
+			}
+		});
+
 		orderCard.querySelector("[data-order-form]").addEventListener("submit", (event) => {
 			event.preventDefault();
+			if (!quantityValue.validity.valid || !Number.isSafeInteger(Number(quantityValue.value))) {
+				quantityValue.reportValidity();
+				updateOrderSummary();
+				return;
+			}
 			const total = quantity * unitPrice;
 			const whatsappMessage = [
 				"Bonjour, je souhaite commander :",
 				`${quantity} x ${quantity === 1 ? orderItem : orderItemPlural}`,
 				`Total : ${total.toLocaleString("fr-FR")} FCFA`,
-				"Livraison gratuite.",
+				"Livraison : modalités à confirmer avec la boutique.",
 				"Merci de confirmer la disponibilité et le délai de livraison."
 			].join("\n");
 			const whatsappUrl = `https://wa.me/${shopWhatsAppNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -84,18 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		revealItems.forEach((item) => revealObserver.observe(item));
 	}
 
-	if (!productStage || prefersReducedMotion) return;
-
-	productStage.addEventListener("pointermove", (event) => {
-		const bounds = productStage.getBoundingClientRect();
-		const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-		const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-		productStage.style.setProperty("--stage-rotate-x", `${y * -2}deg`);
-		productStage.style.setProperty("--stage-rotate-y", `${x * 2}deg`);
-	});
-
-	productStage.addEventListener("pointerleave", () => {
-		productStage.style.setProperty("--stage-rotate-x", "0deg");
-		productStage.style.setProperty("--stage-rotate-y", "0deg");
-	});
 });
