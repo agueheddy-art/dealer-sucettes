@@ -29,6 +29,31 @@
 		</header>
 
 		<main id="accueil">
+			<section class="secondary-product container" aria-labelledby="secondary-product-title">
+				<div class="secondary-product-card" data-order-card data-unit-price="6000" data-order-item="déodorant parfumé MELORT 200 ml" data-order-item-plural="déodorants parfumés MELORT 200 ml" data-order-delivery="Livraison gratuite.">
+					<div class="secondary-product-visual" aria-hidden="true"><span>MELORT</span></div>
+					<div class="secondary-product-info">
+						<span class="secondary-product-kicker">À ajouter à votre commande</span>
+						<h2 id="secondary-product-title">Déodorant parfumé MELORT · 200 ml</h2>
+						<div class="secondary-product-price"><strong>6 000 FCFA</strong><span>Livraison gratuite</span></div>
+					</div>
+					<div class="secondary-product-quantity">
+						<span class="quantity-label">Quantité</span>
+						<div class="quantity-control" aria-label="Choisir la quantité de déodorants">
+							<button class="quantity-button" type="button" data-quantity-action="decrease" aria-label="Diminuer la quantité de déodorants">&minus;</button>
+							<input data-quantity-value type="number" min="1" step="1" value="1" required inputmode="numeric" aria-label="Quantité de déodorants">
+							<button class="quantity-button" type="button" data-quantity-action="increase" aria-label="Augmenter la quantité de déodorants">+</button>
+						</div>
+					</div>
+					<div class="secondary-product-order">
+						<div class="secondary-product-total"><span>Total</span><strong data-order-total>6 000 FCFA</strong></div>
+						<form data-order-form>
+							<button class="button button-primary" type="submit">Commander <span aria-hidden="true">&rarr;</span></button>
+						</form>
+					</div>
+				</div>
+			</section>
+
 			<section class="container hero">
 				<div class="hero-text">
 					<p class="eyebrow">Douceur Nomade · Bien-être au quotidien</p>
